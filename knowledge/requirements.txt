@@ -1,0 +1,18 @@
+# PyTorch (CUDA 12.8)
+#--extra-index-url https://download.pytorch.org/whl/cu128
+#torch
+#torchvision
+
+# 核心依赖
+minio
+langchain-openai
+langgraph
+grandalf
+pymilvus[model]
+sentence-transformers
+pymongo
+#mineru依赖pytorch,从清华镜像源下载，会把我们自己从官网下载的GPU版本pytorch覆盖掉。
+#所以应该先安装requirements.txt中的依赖，然后再单独装从官网安装pytorch。
+mineru[all]
+openai-agents
+#每次装完依赖后，固定再跑一次这条命令（把它当成收尾步骤）：python -m pip install torch==2.11.0 torchvision==0.26.0 torchaudio==2.11.0 --index-url https://download.pytorch.org/whl/cu128

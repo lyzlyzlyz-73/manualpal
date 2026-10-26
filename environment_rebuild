@@ -1,0 +1,12 @@
+# 1. 创建并激活虚拟环境
+python -m venv .venv
+.venv\Scripts\activate
+
+# 2. 装项目依赖（读 requirements.txt，不是 .[all]）
+uv pip install -r knowledge\requirements.txt
+
+# 3. ★收尾★ 用官方 CUDA 源覆盖 GPU 版 torch（版本对齐 lmdeploy）
+python -m pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+
+# 4. 验证
+python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
